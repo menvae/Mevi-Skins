@@ -16,8 +16,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Include="..\RGSKin.Bindings\**\*.cs" 
-                 Exclude="..\RGSKin.Bindings\obj\**;..\RGSKin.Bindings\bin\**" 
+        <Compile Include="..\RGSkin.Bindings\**\*.cs" 
+                 Exclude="..\RGSkin.Bindings\obj\**;..\RGSSkin.Bindings\bin\**" 
                  Link="Bindings\%(RecursiveDir)%(Filename)%(Extension)" />
     </ItemGroup>
 
