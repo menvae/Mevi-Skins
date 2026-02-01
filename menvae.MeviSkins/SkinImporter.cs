@@ -18,7 +18,7 @@ namespace menvae.MeviSkins;
 public class SkinImporter : MapImporter
 {
     public override string[] FileExtensions => [".osk"];
-    public override string GameName => "This is so ass";
+    public override string GameName => "skin not map";
 
     #nullable enable
     private Storage? skinStorage;
@@ -51,7 +51,7 @@ public class SkinImporter : MapImporter
             
             if (mapStore == null)
             {
-                Logger.Error(null, "Failed to get MapStore");
+                Logger.Error(null, "MeviSkins: Failed to get MapStore");
                 return null;
             }
             
@@ -63,7 +63,7 @@ public class SkinImporter : MapImporter
             
             if (game == null)
             {
-                Logger.Error(null, "Failed to get game from MapStore");
+                Logger.Error(null, "MeviSkins: Failed to get game from MapStore");
                 return null;
             }
             
@@ -94,7 +94,7 @@ public class SkinImporter : MapImporter
         }
         catch (Exception e)
         {
-            Logger.Error(e, "Failed to get SkinManager via reflection");
+            Logger.Error(e, "MeviSkins: Failed to get SkinManager via reflection");
             return null;
         }
     }
@@ -113,7 +113,7 @@ public class SkinImporter : MapImporter
             
             if (scheduleMethod == null)
             {
-                Logger.Error(null, "Failed to find Schedule method");
+                Logger.Error(null, "MeviSkins: Failed to find Schedule method");
                 return;
             }
 
@@ -123,7 +123,7 @@ public class SkinImporter : MapImporter
         }
         catch (Exception e)
         {
-            Logger.Error(e, "Failed to schedule ReloadSkinList");
+            Logger.Error(e, "MeviSkins: Failed to schedule ReloadSkinList");
         }
     }
 
@@ -137,12 +137,12 @@ public class SkinImporter : MapImporter
 
         if (skinStorage == null)
         {
-            Logger.Log("Skin storage is still null vro.");
+            Logger.Log("MeviSkins: Skin storage is still null vro.");
         }
 
         if (skinManager == null)
         {
-            Logger.Log("Skin manager is still null vroooooooo.");
+            Logger.Log("MeviSkins: Skin manager is still null vroooooooo.");
         }
 
         var notification = CreateNotification();
@@ -177,7 +177,7 @@ public class SkinImporter : MapImporter
         catch (Exception e)
         {
             notification.State = LoadingState.Failed;
-            Logger.Error(e, "Error while importing a 3rd-party-skin skin.");
+            Logger.Error(e, "MeviSkins: Error while importing 3rd-party skin.");
         }
     }
 }
