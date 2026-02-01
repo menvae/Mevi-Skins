@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fluXis", "..\fluXis\fluXis\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "menvae.MeviSkins", "menvae.MeviSkins\menvae.MeviSkins.csproj", "{CA47FD80-FFFF-4C0A-8531-D1A0F64FB1B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGSkin.Bindings", "RGSKin.Bindings\RGSkin.Bindings.csproj", "{D68AE3A9-C249-4C7A-9936-068AA5EEE183}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGSkin.Bindings", "RGSkin.Bindings\RGSkin.Bindings.csproj", "{D68AE3A9-C249-4C7A-9936-068AA5EEE183}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
