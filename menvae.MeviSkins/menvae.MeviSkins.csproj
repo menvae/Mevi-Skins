@@ -1,6 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    
     <PropertyGroup>
         <!-- fuck you flux -->
         <AssemblyName>fluXis.$(MSBuildProjectName)</AssemblyName>
@@ -14,7 +13,12 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\fluXis\fluXis\fluXis.csproj" />
-        <ProjectReference Include="..\RGSKin.Bindings\RGSKin.Bindings.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="..\RGSKin.Bindings\**\*.cs" 
+                 Exclude="..\RGSKin.Bindings\obj\**;..\RGSKin.Bindings\bin\**" 
+                 Link="Bindings\%(RecursiveDir)%(Filename)%(Extension)" />
     </ItemGroup>
 
     <ItemGroup>
@@ -23,7 +27,7 @@
 
     <ItemGroup>
       <EmbeddedResource Include="..\$(MSBuildProjectName).NativeLibs\rgskin.dll">
-        <LogicalName>rgskin.dll</LogicalName>
+          <LogicalName>rgskin.dll</LogicalName>
       </EmbeddedResource>
 
       <EmbeddedResource Include="..\$(MSBuildProjectName).NativeLibs\librgskin.so">
@@ -35,21 +39,5 @@
         <LogicalName>librgskin.dylib</LogicalName>
       </EmbeddedResource> -->
     </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.44.1">
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        <PrivateAssets>all</PrivateAssets>
-      </PackageReference>
-    </ItemGroup>
-
-    <Target Name="ILRepack" AfterTargets="Build">
-        <ItemGroup>
-            <InputAssemblies Include="$(OutputPath)$(AssemblyName).dll" />
-            <InputAssemblies Include="$(OutputPath)RGSKin.Bindings.dll" />
-        </ItemGroup>
-        
-        <ILRepack OutputFile="$(OutputPath)$(AssemblyName).dll" InputAssemblies="@(InputAssemblies)" Internalize="true" />
-    </Target>
     
 </Project>

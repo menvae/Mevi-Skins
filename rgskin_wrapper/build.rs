@@ -21,7 +21,7 @@ fn main() {
 
 </Project>"#;
 
-    let csproj_path = Path::new("../RGSKin.Bindings/RGSkin.Bindings.csproj");
+    let csproj_path = Path::new("../RGSkin.Bindings/RGSkin.Bindings.csproj");
     fs::write(csproj_path, csproj_content)
         .expect("Failed to write .csproj file");
 
