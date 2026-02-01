@@ -31,11 +31,11 @@ namespace RGSkin.Bindings
                     libraryName = "librgskin.so";
                     resourceName = "librgskin.so";
                 }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    libraryName = "librgskin.dylib";
-                    resourceName = "librgskin.dylib";
-                }
+                // else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                // {
+                //     libraryName = "librgskin.dylib";
+                //     resourceName = "librgskin.dylib";
+                // }
                 else
                 {
                     throw new PlatformNotSupportedException("Unsupported platform");
