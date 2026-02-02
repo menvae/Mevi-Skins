@@ -18,7 +18,7 @@ namespace menvae.MeviSkins;
 public class SkinImporter : MapImporter
 {
     public override string[] FileExtensions => [".osk"];
-    public override string GameName => "skin not map";
+    public override string GameName => "skin not";
 
     #nullable enable
     private Storage? skinStorage;

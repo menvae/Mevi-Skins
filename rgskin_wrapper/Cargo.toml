@@ -7,7 +7,7 @@ edition = "2024"
 crate-type = ["cdylib"]
 
 [dependencies]
-rgskin = "0.0.1"
+rgskin = "0.0.2"
 
 [build-dependencies]
 csbindgen = "1.8"

@@ -14,7 +14,7 @@ public class SkinPlugin : Plugin
 {
     public override string Name => "Mevi Skins";
     public override string Author => "menvae";
-    public override Version Version => new(0, 0, 1);
+    public override Version Version => new(0, 0, 2);
 
     private SkinPluginConfig config;
 
