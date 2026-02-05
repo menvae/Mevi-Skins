@@ -6,6 +6,7 @@ using fluXis.Import;
 using fluXis.Overlay.Notifications;
 using fluXis.Skinning;
 using JetBrains.Annotations;
+using osu.Framework.Bindables;
 using osu.Framework.Logging;
 using osu.Framework.Platform;
 using RGSkin.Bindings;
@@ -21,14 +22,17 @@ public class SkinImporter : MapImporter
     public override string GameName => "skin not";
 
     #nullable enable
-    private Storage? skinStorage;
+    private Storage? storage;
     private SkinManager? skinManager = null;
     #nullable disable
 
+    private readonly Bindable<bool> exportLayouts;
+
     public SkinImporter(SkinPluginConfig config)
     {
-        skinStorage = GetStorage()?.GetStorageForDirectory("skins");
-        skinManager = GetSkinManager();
+        storage = GetStorage();
+        skinManager = GetSkinManager(false);
+        exportLayouts = config.GetBindable<bool>(SkinPluginSetting.ExportLayouts);
     }
 
     #nullable enable
@@ -40,7 +44,7 @@ public class SkinImporter : MapImporter
         return storageProperty?.GetValue(this) as Storage;
     }
 
-    private SkinManager? GetSkinManager()
+    private SkinManager? GetSkinManager(bool log = true)
     {
         try
         {
@@ -51,7 +55,7 @@ public class SkinImporter : MapImporter
             
             if (mapStore == null)
             {
-                Logger.Error(null, "MeviSkins: Failed to get MapStore");
+                if (log) Logger.Error(null, "MeviSkins: Failed to get MapStore");
                 return null;
             }
             
@@ -63,7 +67,7 @@ public class SkinImporter : MapImporter
             
             if (game == null)
             {
-                Logger.Error(null, "MeviSkins: Failed to get game from MapStore");
+                if (log) Logger.Error(null, "MeviSkins: Failed to get game from MapStore");
                 return null;
             }
             
@@ -132,10 +136,10 @@ public class SkinImporter : MapImporter
         if (!File.Exists(path))
             return;
 
-        skinStorage ??= GetStorage().GetStorageForDirectory("skins");
+        storage ??= GetStorage();
         skinManager ??= GetSkinManager();
 
-        if (skinStorage == null)
+        if (storage == null)
         {
             Logger.Log("MeviSkins: Skin storage is still null vro.");
         }
@@ -144,6 +148,9 @@ public class SkinImporter : MapImporter
         {
             Logger.Log("MeviSkins: Skin manager is still null vroooooooo.");
         }
+
+        var skinStorage = storage.GetStorageForDirectory("skins");
+        var layoutDir = storage.GetStorageForDirectory("layouts").GetFullPath("");
 
         var notification = CreateNotification();
 
@@ -162,7 +169,7 @@ public class SkinImporter : MapImporter
             switch (fileExt)
             {
                 case ".osk":
-                    Converter.ConvertFromOsu(folder, skinStorage.GetFullPath(""));
+                    Converter.ConvertFromOsu(folder, skinStorage.GetFullPath(""), exportLayouts.Value, layoutDir);
                     break;
 
                 default:

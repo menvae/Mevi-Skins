@@ -2,13 +2,13 @@
 
 Convert skins from other games to fluXis skins.
 
-## How to install & Use
+## How to Install & Use
 
-1. Go to [Releases](https://github.com/menvae/Mevi-Skins/releases/latest) and download the ``fluXis.menvae.MeviSkins.dll``
+1. Go to [Releases](https://github.com/menvae/Mevi-Skins/releases/latest) and download ``fluXis.menvae.MeviSkins.dll``
 
-2. Go to your fluXis local directory. It can be either in ``%APPDATA%/fluXis/plugins`` if you're on windows or ``~/.local/share/fluXis/plugins`` on linux (may differ)
+2. Go to plugins in your fluXis local directory. It can be either in ``%APPDATA%/fluXis/plugins`` if you're on windows or ``~/.local/share/fluXis/plugins`` on linux (may differ)
 
-3. Put the ``fluXis.menvae.MeviSkins.dll`` in that directory and you're basically done.
+3. Put ``fluXis.menvae.MeviSkins.dll`` in that directory and you're basically done.
 
 4. Now just drag any .osk file into the game and it'll import!
 
@@ -28,7 +28,7 @@ You have to download the source code by cloning the repository using git:
 git clone https://github.com/menvae/Mevi-Skins
 ```
 
-Make sure the [fluXis repo](https://github.com/InventiveRhythm/fluXis) is cloned next to where the fluxel repo is.
+Make sure the [fluXis repo](https://github.com/InventiveRhythm/fluXis) is cloned next to where the Mevi Skins repo is.
 
 > Your filesystem should look like this if done correctly:
 > ```
@@ -53,7 +53,7 @@ dotnet build --project menvae.MeviSkins
 
 It's really important to build this in debug and NOT in Release, reason for that being is that I have no idea why everything goes south when you do..
 
-## Building (Bindings)
+## Building (Bindings) \[optional]
 
 Not really important since I took the courtesy of doing it.
 

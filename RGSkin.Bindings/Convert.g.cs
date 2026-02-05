@@ -19,7 +19,11 @@ namespace RGSkin.Bindings
 
 
         [DllImport(__DllName, EntryPoint = "fromOsu", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-        public static extern void fromOsu(byte* input_dir, byte* output_dir);
+        [return: MarshalAs(UnmanagedType.U1)]
+        public static extern bool fromOsu(byte* input_dir, byte* skin_output_dir, [MarshalAs(UnmanagedType.U1)] bool export_layout, byte* layout_output_dir, byte** error_out);
+
+        [DllImport(__DllName, EntryPoint = "free_error", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern void free_error(byte* ptr);
 
 
     }
